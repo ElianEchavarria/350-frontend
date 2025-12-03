@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ModernShop - Modern E-Commerce Store</title>
+    <title>Shop - ModernShop</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -50,31 +50,12 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Welcome to ModernShop</h1>
-                <p>Discover our amazing collection of products at unbeatable prices</p>
-                <a href="shop.html" class="btn btn-primary btn-large">Shop Now</a>
-            </div>
-        </section>
-        <!-- Home Features -->
-        <section class="features-section">
+        <section class="products-section" id="productsSection">
             <div class="container">
-                <h2>Why Shop With Us</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>Fresh Ingredients</h3>
-                        <p>We use only premium ingredients for all our desserts.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Fast Delivery</h3>
-                        <p>Get your treats delivered hot and fresh.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Quality Guarantee</h3>
-                        <p>Satisfaction guaranteed with every order.</p>
-                    </div>
+                <h2>Our Products</h2>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here by JavaScript -->
+                    <div class="loading-skeleton">Loading products...</div>
                 </div>
             </div>
         </section>
@@ -182,7 +163,6 @@
         </div>
     </div>
 
-    <script src="config.js"></script>
     <script src="app.js"></script>
 </body>
 
