@@ -3,4 +3,4 @@
 // window.__API_BASE__ = 'https://modernshop-backend.example.com';
 
 // Do NOT commit `config.js` if it contains secrets. This example is safe to commit.
-window.__API_BASE__ = 'https://three50-backend.onrender.com/';
+window.__API_BASE__ = 'https://three50-backend.onrender.com';
