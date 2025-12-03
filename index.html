@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles/style.css">
+  <title>Frontend Mentor | Product list with cart</title>
+</head>
+
+<body>
+  <h1 class="main-title">Desserts</h1>
+  <div class="main-content">
+    <section class="products-grid js-products-grid">
+    </section>
+
+    <div class="payment-summary js-payment-summary">
+      <div class="payment-summary-title">
+        <h2 class="js-cart-quantity js-quantity"></h2>
+      </div>
+
+      <div class="js-cart-items">
+        <!-- Cart items will be inserted here -->
+      </div>
+
+
+      <div class="price-container price-hidden hide">
+        <div class="order-title ">
+          <p>Order Total</p>
+        </div>
+        <div class="price-total js-price-total">
+          <p class="js-price-show">
+            $0
+          </p>
+        </div>
+      </div>
+
+      <div class="carbon-neutral-container hide">
+        <img src="assets/images/icon-carbon-neutral.svg" alt="carbon neutral icon" class="carbon-neutral-icon">
+        <p class="carbon-neutral-text">This is a <span>carbon-neutral</span> delivery</p>
+      </div>
+
+      <div class="button-container-cart hide">
+        <button class="checkout-btn">Confirm Order</button>
+      </div>
+
+
+
+
+      <div class="empty-cart-items empty-hidden" id="empty-cart">
+        <img src="assets/images/illustration-empty-cart.svg" alt="Empty Cart" class="Empty-Cart-img">
+        <p class="Empty-Cart-message">Your added items will appear here</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-overlay js-modal-overlay modal-hidden">
+    <div class="modal-container">
+      <img src="assets/images/icon-order-confirmed.svg" alt="confirmation img" class="modal-confirm-icon">
+      <div class="modal-title">
+        <h1>Order Confirmed</h1>
+      </div>
+      <div class="modal-message">
+        <p>We hope you enjoy your food!</p>
+      </div>
+      <div class="modal-items-wrapper">
+        <div class="modal-items-list js-modal-items-list">
+          <!-- Modal items will be inserted here -->
+        </div>
+        <div class="modal-order-summary">
+          <div class="modal-order-label">
+            <p>Order Total</p>
+          </div>
+          <div class="modal-order-total">
+            <p class="js-modal-order-total">$0</p>
+          </div>
+        </div>
+        <div>
+          <button class="js-modal-reset-btn">Start New Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <script type="module" src="scripts/cartSummary.js"></script>
+  <script type="module" src="scripts/index.js"></script>
+</body>
+
+</html>
