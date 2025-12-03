@@ -406,7 +406,8 @@ function renderProducts() {
 
             addBtn.addEventListener('click', () => {
                 const qty = parseInt(qtyInput.value) || 1;
-                addToCart(product.id, qty);
+                // pass the clicked button so feedback can target it
+                addToCart(product.id, qty, addBtn);
             });
         }
     });
@@ -416,7 +417,7 @@ function renderProducts() {
 // SHOPPING CART
 // ============================
 
-async function addToCart(productId, qty = 1) {
+async function addToCart(productId, qty = 1, sourceBtn = null) {
     if (!appState.user) {
         showMessage('loginMessage', 'Please login first', 'error');
         openModal('login');
@@ -437,9 +438,10 @@ async function addToCart(productId, qty = 1) {
         const data = await response.json();
 
         if (data.ok) {
-            // Fetch updated cart
+            // Optimistic UI feedback on the specific button
+            showAddedToCartFeedback(sourceBtn);
+            // Fetch updated cart (update UI when server confirms)
             await loadCart();
-            showAddedToCartFeedback();
         }
     } catch (error) {
         console.error('Error adding to cart:', error);
@@ -559,16 +561,28 @@ function closeCart() {
 
 function showAddedToCartFeedback() {
     // Visual feedback - you could add a toast notification here
-    const btn = document.querySelector('.add-to-cart-btn:last-of-type');
-    if (btn) {
-        const originalText = btn.textContent;
-        btn.textContent = '✓ Added!';
-        btn.style.backgroundColor = 'var(--success-color)';
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.backgroundColor = '';
-        }, 2000);
+    let btn = null;
+    // If a specific button element was passed via arguments, use it
+    if (arguments && arguments.length > 0 && arguments[0]) {
+        btn = arguments[0];
     }
+    // Fallback: pick the last add button
+    if (!btn) btn = document.querySelector('.add-to-cart-btn:last-of-type');
+    if (!btn) return;
+
+    const originalText = btn.textContent;
+    const originalBg = btn.style.backgroundColor || '';
+    btn.disabled = true;
+    btn.textContent = '✓ Added!';
+    btn.style.backgroundColor = 'var(--success-color)';
+    btn.style.color = '#fff';
+
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.backgroundColor = originalBg;
+        btn.style.color = '';
+        btn.disabled = false;
+    }, 1600);
 }
 
 // ============================
